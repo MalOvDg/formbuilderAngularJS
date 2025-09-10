@@ -1,0 +1,277 @@
+.main {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid #111;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.my-form {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid #111;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 10px;
+}
+
+.form-builder { 
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #faf6f0;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.07);
+  border: 1px solid #11161cc2;
+}
+
+.wrap {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.form-builder h2 { 
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    padding-bottom: 0;
+    padding-left: 10px;
+}
+
+.form-builder h2 { 
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    padding-bottom: 0;
+    padding-left: 10px;
+}
+
+.form-group label {
+  margin: 2rem auto;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    background-color: #ffdb39;
+    padding: 15px 0px;
+    margin-top: 0px;
+}
+
+h3 {
+    text-align: center;
+    background-color: #ffdb39;
+    padding: 15px 0px;
+    margin-top: 0px;
+}
+
+h5 {
+    text-align: left;
+    background-color: #ffdb39bf;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+h1 {
+    text-align: center;
+    background-color: #fff; /*ffdb39*/
+    color: #111;
+    padding: 30px 0px;
+    margin-top: 0px;
+}
+
+.text-list {
+    background-color: #faf6f0;
+    padding: 10px 0px;
+    margin-bottom: 5px;
+}
+
+ul {
+    list-style: none;
+    font-size: 16px;
+    color: #3a3838;
+    margin-left: -40px;
+    margin-bottom: 0px;
+}
+
+li {
+    border-bottom: 1px solid #111;
+    background-color: #faf6f0;
+    padding: 10px 0px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+li span {
+    cursor: pointer;
+    position: relative;
+    float: right;
+    margin-right: 10px;
+}
+
+.selected {
+    background-color: #30d2e8;
+    cursor: pointer;
+}
+
+.sub-titel {
+  margin: 2rem auto;
+  font-size: 15px;
+  font-weight: 500;
+  padding-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+  display: block;
+  width: 100%; 
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  box-sizing: border-box; 
+}
+
+.grid-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: .5rem; 
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.grid-choice > div {
+  display: flex;
+  align-items: center; 
+  gap: 1rem; 
+}
+
+/* Radio Button */
+.radio-box {
+  margin-left: auto; 
+    /*accent-color: #ffdb39;*/
+    accent-color: #111;
+}
+
+.checkbox {
+  margin-left: auto; 
+}
+
+.grid-container  {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-between;
+
+}
+
+.option-add {
+  display: flex;
+  gap: 0.5rem;
+  width: 96%;
+}
+
+.option-add input {
+  flex: 1;
+}
+
+.option-add button {
+  background: #111;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 1em 1.5em;
+  font-size: 15px;
+  border-radius: 30px;
+  margin: 35px 0;
+
+}
+
+.option-list {
+  margin-top: 0.5rem;
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-add-question {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  border-radius: 30px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-submit {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  border-radius: 30px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.success-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: green;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .form-builder {
+    padding: 1rem;
+  }
+
+  input, select, button {
+    font-size: 1rem;
+  }
+
+  .grid-choice {
+    grid-template-columns: 1fr; 
+    gap: 0.5rem; 
+  }
+
+  .grid-choice > div {
+    gap: 0.5rem; 
+  }
+
+  input {
+    width: 100%; 
+  }
+
+  input {
+    font-size: 0.9rem; 
+    padding: 8px; 
+  }
+
+  .radio-box {
+    margin-left: 0.5rem; 
+  }
+}
+
+
+
+

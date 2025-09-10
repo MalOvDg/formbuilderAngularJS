@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="myFirstApp">
+<head>
+  <title>Submit Form</title>
+  <script src="angular.min.js"></script>
+  <script src="waspForm.js"></script>  
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Create & Submit Questions Form</h1>
+        
+    <div ng-controller="myFirstController" class="form-builder">
+
+        <!-- Text Question -->
+        <div class="form-group">
+            <h4>Text Question</h4>
+            <input type="text" ng-model="newTextQuestion" placeholder="New question " />
+            <!-- Button: Add to List of Questions -->
+            <button class="btn-add-question" ng-click="addTextQuestion()">Add to List</button>
+        </div>
+
+        <div class="text-list">
+            <ul>
+                <li ng-repeat="question in textQuestions">{{question}}</li>
+            </ul>
+        </div>
+
+        <!-- Multiple Choice Question Section - Updated --> <!--changed to old placeholder text from (C)-->
+        <h4>Multiple Choice Question</h4>
+
+        <!-- Question input -->
+        <input type="text" ng-model="newQuestion.text" placeholder="New question" />
+
+        <h5>Add choices to question:</h5>
+
+        <!-- Four choices with one correct answer (radio button) -->
+        <div class="grid-choice">
+          <!--<div class="option-added">-->
+                <div ng-repeat="choice in newQuestion.choices track by $index">
+                    <input type="text" ng-model="choice.text" placeholder="choice {{$index + 1}}" />
+                    <input class="radio-box" type="radio" name="correctChoice" ng-model="newQuestion.correctIndex" ng-value="$index" />
+                </div>
+            <!--</div>-->
+        </div>
+        <!-- Button: Add to List of Questions -->
+        <button class="btn-add-question"
+            ng-disabled="!canAddQuestion()" 
+            ng-click="addToList()">
+            Add to List 
+        </button>
+
+    </br>
+        <!-- Displaying added questions -->
+         <div class="form-group">
+        <h3>List of Questions</h3>
+        <div ng-repeat="q in questionList" class="list">
+            <p><strong>Q:</strong> {{ q.text }}</p>
+            <ul>
+            <li ng-repeat="c in q.choices track by $index">
+                {{ c.text }} <span ng-if="$index === q.correctIndex">✔️</span>
+            </li>
+            </ul>
+        </div>
+        </div>
+
+        <!-- Submit Question Form Button -->
+        <div style="margin-top: 20px;">
+            <button class="btn-submit" ng-click="submitForm()" style="padding: 10px 20px; font-size: 16px;">Submit</button>
+        </div>
+
+    </div>
+</body>
+</html>
+
