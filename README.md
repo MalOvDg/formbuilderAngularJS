@@ -1,10 +1,13 @@
 ## AngularJS
 
-A simple form where you can add your own questions, either 'textquestion' or 'multiple choice'.
+A questionnaire where user can add questions to the form, either 'text question(s)' or 'multiple choice question(s)'.
 
-The form has:
- A wasp inspired design 
- function: multiple choice, and display of questions + choices
- function: text question, and display of questions 
- function: submit form, at the moment only to console log 
-
+#### The form contents: 
+- Text questions
+- Multiple choice questions
+- displays a list of created questions
+- displays a list of created questions + choices
+- Submit questions to form
+- Result form
+- Answer questionnaire
+- *wasp inspired color palett*
