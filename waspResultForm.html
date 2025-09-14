@@ -1,0 +1,53 @@
+<div class="form-builder">
+
+  <!-- show after submission success-->
+   <div ng-if="submissionSuccess" class="submission-message">
+      <div class="form-group"> 
+        <p ng-if="submissionSuccess" style="margin-top: 20px; font-weight: bold; color: green;"> 
+          Thank you for your response! 
+        </p> 
+      </div>
+  </div>
+
+  <!--show view before submission success-->
+  <div ng-if="!submissionSuccess" class="quiz-headline">
+    <h1>Quiz Mode</h1>
+
+    <div class="form-group">
+    <h2>Text Questions</h2>
+    <div ng-repeat="q in formData.textQuestions track by $index" class="form-group">
+      <p><strong>Q{{$index + 1}}:</strong> {{ q }}</p>
+      <textarea ng-model="userTextAnswers[$index]"
+                placeholder="Your answer..."
+                rows="2"
+                style="width: 100%;"></textarea>
+    </div>
+    </div>
+
+    <h2>Multiple Choice Questions</h2>
+    <form name="quizForm" class="form-group">
+      <div ng-repeat="q in formData.questionList track by $index" class="form-group">
+        <p><strong>Q:{{ $index + 1 }}:</strong> {{ q.text }}</p>
+
+        <div class="grid-choice">
+          <div ng-repeat="choice in q.choices track by $index">
+            <div class="label-boxes"
+                    ng-class="{'selected': userAnswers[$parent.$index] === $index}"
+                    ng-click="userAnswers[$parent.$index] = $index; checkAnswer($parent.$index)">
+                    {{ choice.text }}
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </form>
+
+      <div style="margin-top: 20px;">
+        <button ng-click="submitAllAnswers()" type="submit" class="btn-submit" style="padding: 10px 20px; font-size: 16px;">Submit</button>
+      </div>
+        <p ng-if="submissionSuccess" style="margin-top: 20px; font-weight: bold; color: green; ">
+        Thank you for your response!
+        </p>
+    </div>
+
+</div>
