@@ -17,10 +17,8 @@
     <h2>Text Questions</h2>
     <div ng-repeat="q in formData.textQuestions track by $index" class="form-group">
       <p><strong>Q{{$index + 1}}:</strong> {{ q }}</p>
-      <textarea ng-model="userTextAnswers[$index]"
-                placeholder="Your answer..."
-                rows="2"
-                style="width: 100%;"></textarea>
+      <textarea ng-model="userTextAnswers[$index]" placeholder="Your answer" 
+      style="width: 100%; resize: none;" rows="2"></textarea>
     </div>
     </div>
 
