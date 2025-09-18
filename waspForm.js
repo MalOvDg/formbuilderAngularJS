@@ -15,8 +15,9 @@ app.config(function($routeProvider) {
         });
 });
 
+// Service to store the 'quiz form' data (between routes).
 app.factory('FormDataService', function() {
-    var finalForm = {};
+    var finalForm = {}; // in-memory variable  
 
     return {
         getData: function() {
@@ -28,7 +29,23 @@ app.factory('FormDataService', function() {
     };
 })
 
-app.controller('FormController', function($scope, $location, FormDataService) {
+// Service to save, get, clear data from localStorage, (save data even after reloading) 
+app.factory('LocalStorageService', function() {
+    return {
+        saveForm: function(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        },
+        getForm: function(key) {
+            const data = localStorage.getItem(key);
+            return data ? JSON.parse(data) : null;
+        },
+        clearForm: function(key) {
+            localStorage.removeItem(key);
+        }
+    };
+});
+
+app.controller('FormController', function($scope, $location, FormDataService, LocalStorageService) {
     // Text question 
     $scope.newTextQuestion = '';
     $scope.textQuestions = [];
@@ -62,30 +79,39 @@ app.controller('FormController', function($scope, $location, FormDataService) {
   $scope.addToList = function() {
     if ($scope.canAddQuestion()) {
       $scope.questionList.push(angular.copy($scope.newQuestion));
+      // resets the input form 
       $scope.newQuestion = { text: '', choices: [{ text: ''}, { text: ''}, { text: ''}, { text: ''}], correctIndex: null };
     }
   };
 
   // Submit form 
   $scope.submitForm = function($event) {
-    if ($event) $event.preventDefault(); 
+    if ($event) $event.preventDefault(); // prevent form submission if $event is done 
 
     const finalForm = {
         textQuestions: $scope.textQuestions,
         questionList: $scope.questionList
     };
 
-    FormDataService.setData(finalForm);  //send the form  
-    console.log("Submitted:", finalForm);
-    alert("Form submitted!");
-
+    // Save data to the 'memory service' (FormDataService) & local storage
+    FormDataService.setData(finalForm);
+    LocalStorageService.saveForm('saveQuizForm', finalForm);
     $location.path('/result');
   };
 });
-    app.controller('ResultController', function($scope, FormDataService) {
-        $scope.formData = FormDataService.getData();
+    app.controller('ResultController', function($scope, FormDataService, LocalStorageService) {
+        $scope.formData = FormDataService.getData(); //fetches the in-memory/"surface" (JS memory) data 
         console.log('Received data:', $scope.formData);
 
+        // If the 'memory service' is empty (i.e. page reload), fetch from localStorage 
+        if (!$scope.formData || !$scope.formData.textQuestions) {
+            $scope.formData = LocalStorageService.getForm('saveQuizForm') || {
+                textQuestions: [],
+                questionList: []
+            };
+        }
+
+        // for the arrays to track user data (answers) 
         $scope.userTextAnswers = new Array($scope.formData.textQuestions.length).fill('');
         $scope.userAnswers = new Array($scope.formData.textQuestions.length).fill(null);
 

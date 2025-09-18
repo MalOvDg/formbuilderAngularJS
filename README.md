@@ -9,5 +9,6 @@ A questionnaire where user can add questions to the form, either 'text question(
 - displays a list of created questions + choices
 - Submit questions to form
 - Result form
+- Saving data in Local Storage (refresh without loosing data) 
 - Answer questionnaire
 - *wasp inspired color palett*
